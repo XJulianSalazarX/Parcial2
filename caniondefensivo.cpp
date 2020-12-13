@@ -29,6 +29,7 @@ bool CanionDefensivo::simularDispDefensivo(float angle,Bala balaE)
 
            if(sqrt(pow((x-xE),2)+pow((y-yE),2))<=bala->getRadio() and sqrt(pow((posx-xE),2)+pow((posy-yE),2))>=copy_bala->getRadio()){
                if(y>0){
+                   bala->setAngulo(angle);
                    delete copy_bala;
                    return true;
                }
@@ -45,5 +46,10 @@ bool CanionDefensivo::simularDispDefensivo2(float angle,Bala balaE)
 
 void CanionDefensivo::disparoOfensivo()
 {
-
+    cout << endl;
+    cout << "cordenadas canion que ataca: ("<<posx<<","<<posy<<")"<<endl;
+    cout << "Velocidad inical de la bala: "<<bala->getV_inicial()<<" m/s"<<endl;
+    cout << "angulo de disparo:" << bala->getAngulo()*180/pi << endl;
+    cout << "tiempo en el que la bala detona: "<<bala->getTiempo()<<" seg."<<endl;
+    cout << endl;
 }

@@ -103,6 +103,7 @@ int main()
                  angle = 91 + rand() % ((180) - 91);
                  angle = angle*pi/180;
                  if(defensivo->simularDispDefensivo(angle,ofensivo->copyBala())){
+                     defensivo->disparoOfensivo();
                      i++;
                  }
             }
