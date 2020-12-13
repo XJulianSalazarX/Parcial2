@@ -18,6 +18,8 @@ public:
     void setPosy(float value);
     float getDistance() const;
     void setDistance(float value);
+
+    Bala copyBala();
 };
 
 #endif // CANION_H

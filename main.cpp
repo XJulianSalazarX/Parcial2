@@ -38,7 +38,7 @@ int main()
             defensivo->setDistance(defensivo->getPosx()-ofensivo->getPosx());
             //radio de destruccion cañon ofensivo
             ofensivo->radioDestruccion(ofensivo->getDistance()*0.05);
-            //for que se termina una vez se hayan generado tres disparos de manera efectiva
+            //ciclo que finaliza  una vez se hayan generado tres disparos de manera efectiva
             for(short i=0;i<3;){
                //generar numeros de manera aleatorio entre 1 y 89 que representan el angulo
                 angle = 1 + rand() % ((90) - 1);
@@ -60,9 +60,9 @@ int main()
             //distancia entre los dos cañones
             ofensivo->setDistance(defensivo->getPosx()-ofensivo->getPosx());
             defensivo->setDistance(defensivo->getPosx()-ofensivo->getPosx());
-            //radio de destruccion cañon ofensivo
+            //radio de destruccion cañon defensivo
             defensivo->radioDestruccion(defensivo->getDistance()*0.025);
-            //for que se termina una vez se hayan generado tres disparos de manera efectiva
+            //ciclo que finaliza una vez se hayan generado tres disparos de manera efectiva
             for(short i=0;i<3;){
                //generar numeros de manera aleatorio entre 1 y 89 que representan el angulo
                 angle = 91 + rand() % ((180) - 91);
@@ -76,6 +76,37 @@ int main()
         }
             break;
         case 3:{
+            //posicon del cañon ofensivo
+            ofensivo->setPosx(0);
+            ofensivo->setPosy(100);
+            //poscion del cañon defensivo
+            defensivo->setPosx(1000);
+            defensivo->setPosy(100);
+            //distancia entre los dos cañones
+            ofensivo->setDistance(defensivo->getPosx()-ofensivo->getPosx());
+            defensivo->setDistance(defensivo->getPosx()-ofensivo->getPosx());
+            //radio de destruccion cañon defensivo y ofensivo
+            defensivo->radioDestruccion(defensivo->getDistance()*0.025);
+            ofensivo->radioDestruccion(ofensivo->getDistance()*0.05);
+            //generar un disparo ofensivo
+            while(true){
+                angle = 1 + rand() % ((90) - 1);
+                angle = angle*pi/180;
+                if(ofensivo->simularDisparo(angle,defensivo->getPosx(),defensivo->getPosy())){
+                    ofensivo->generarDisparo(defensivo->getPosx(),defensivo->getPosy());
+                    break;
+                }
+            }
+            //ciclo que finaliza una vez se hayan generado tres disparos de manera efectiva
+            for(short i=0;i<3;){
+                //generar numeros de manera aleatorio entre 1 y 89 que representan el angulo
+                 angle = 91 + rand() % ((180) - 91);
+                 angle = angle*pi/180;
+                 if(defensivo->simularDispDefensivo(angle,ofensivo->copyBala())){
+                     i++;
+                 }
+            }
+
 
         }
             break;

@@ -5,7 +5,7 @@ CanionOfensivo::CanionOfensivo()
     bala = new Bala();
 }
 
-bool CanionOfensivo::simularDispOfensivo(float angle, float x, float y)
+bool CanionOfensivo::simularDispOfensivo(float angle,Bala balaE)
 {
 
 }

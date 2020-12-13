@@ -16,6 +16,11 @@ void Canion::setDistance(float value)
     bala->setDistance(value);
 }
 
+Bala Canion::copyBala()
+{
+    return *bala;
+}
+
 float Canion::getPosx() const
 {
     return posx;
