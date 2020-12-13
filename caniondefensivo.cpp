@@ -36,6 +36,7 @@ bool CanionDefensivo::simularDispDefensivo(float angle,Bala balaE)
            }
         }
     }
+    delete copy_bala;
     return false;
 }
 
@@ -69,6 +70,7 @@ bool CanionDefensivo::simularDispDefensivo2(float angle,Bala balaE)
            }
         }
     }
+    delete copy_bala;
     return false;
 }
 
