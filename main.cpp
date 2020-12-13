@@ -16,7 +16,7 @@ int main()
     short opc=0;
     float angle = 0;
     srand(time(NULL));
-    cout << "Seliccione:" << endl;
+    cout << "Seleccione:" << endl;
     cout << "1. Probar caso 1." << endl;
     cout << "2. Probar caso 2." << endl;
     cout << "3. Probar caso 3." << endl;
@@ -88,7 +88,7 @@ int main()
             //radio de destruccion cañon defensivo y ofensivo
             defensivo->radioDestruccion(defensivo->getDistance()*0.025);
             ofensivo->radioDestruccion(ofensivo->getDistance()*0.05);
-            //generar un disparo ofensivo
+            //generar un disparo ofensivo efectivo
             while(true){
                 angle = 1 + rand() % ((90) - 1);
                 angle = angle*pi/180;
@@ -123,7 +123,7 @@ int main()
             //radio de destruccion cañon defensivo y ofensivo
             defensivo->radioDestruccion(defensivo->getDistance()*0.025);
             ofensivo->radioDestruccion(ofensivo->getDistance()*0.05);
-            //generar un disparo ofensivo
+            //generar un disparo ofensivo efectivo
             while(true){
                 angle = 1 + rand() % ((90) - 1);
                 angle = angle*pi/180;
@@ -145,14 +145,52 @@ int main()
         }
             break;
         case 5:{
-
+            //posicon del cañon ofensivo
+            ofensivo->setPosx(0);
+            ofensivo->setPosy(300);
+            //poscion del cañon defensivo
+            defensivo->setPosx(1000);
+            defensivo->setPosy(200);
+            //distancia entre los dos cañones
+            ofensivo->setDistance(defensivo->getPosx()-ofensivo->getPosx());
+            defensivo->setDistance(defensivo->getPosx()-ofensivo->getPosx());
+            //radio de destruccion cañon defensivo y ofensivo
+            defensivo->radioDestruccion(defensivo->getDistance()*0.025);
+            ofensivo->radioDestruccion(ofensivo->getDistance()*0.05);
+            //generar un disparo ofensivo efectivo
+            while(true){
+                angle = 1 + rand() % ((90) - 1);
+                angle = angle*pi/180;
+                if(ofensivo->simularDisparo(angle,defensivo->getPosx(),defensivo->getPosy())){
+                    ofensivo->generarDisparo(defensivo->getPosx(),defensivo->getPosy());
+                    break;
+                }
+            }
+            //generar un disparo defensivo efectivo
+            while(true){
+                //generar numeros de manera aleatorio entre 1 y 89 que representan el angulo
+                 angle = 91 + rand() % ((180) - 91);
+                 angle = angle*pi/180;
+                 if(defensivo->simularDispDefensivo2(angle,ofensivo->copyBala())){
+                     defensivo->disparoOfensivo();
+                     break;
+                 }
+            }
+            for(short i=0;i<3;){
+                angle = 1 + rand() % ((90) - 1);
+                angle = angle*pi/180;
+                if(ofensivo->simularDispOfensivo(angle,defensivo->copyBala())){
+                    ofensivo->disparoOfensivo();
+                    i++;
+                }
+            }
         }
             break;
         default:
             cout << "Opcion no valida." << endl;
 
         }
-        cout << "Seliccione:" << endl;
+        cout << "Seleccione:" << endl;
         cout << "1. Probar caso 1." << endl;
         cout << "2. Probar caso 2." << endl;
         cout << "3. Probar caso 3." << endl;

@@ -20,7 +20,7 @@ bool CanionDefensivo::simularDispDefensivo(float angle,Bala balaE)
         Vx = bala->getV_inicial()*cos(angle);
         Vy = bala->getV_inicial()*sin(angle);
 
-        for(bala->setTiempo(0),copy_bala->setTiempo(2.5);bala->getTiempo()<=100;bala->setTiempo(bala->getTiempo()+0.5),copy_bala->setTiempo(copy_bala->getTiempo()+0.5)){
+        for(bala->setTiempo(0),copy_bala->setTiempo(2);bala->getTiempo()<=100;bala->setTiempo(bala->getTiempo()+0.5),copy_bala->setTiempo(copy_bala->getTiempo()+0.5)){
 
            x = posx + Vx * bala->getTiempo();
            y = posy + Vy*bala->getTiempo() - (0.5*bala->getG()*bala->getTiempo()*bala->getTiempo());
@@ -45,7 +45,6 @@ bool CanionDefensivo::simularDispDefensivo2(float angle,Bala balaE)
     float Vx=0,Vy=0,x=0,y=0,xE,yE,VxE,VyE;
 
     //velocidad inicail de la vala enemiga
-
     VxE = copy_bala->getV_inicial()*cos(copy_bala->getAngulo());
     VyE = copy_bala->getV_inicial()*sin(copy_bala->getAngulo());
 
@@ -54,7 +53,7 @@ bool CanionDefensivo::simularDispDefensivo2(float angle,Bala balaE)
         Vx = bala->getV_inicial()*cos(angle);
         Vy = bala->getV_inicial()*sin(angle);
 
-        for(bala->setTiempo(0),copy_bala->setTiempo(2.5);bala->getTiempo()<=100;bala->setTiempo(bala->getTiempo()+0.5),copy_bala->setTiempo(copy_bala->getTiempo()+0.5)){
+        for(bala->setTiempo(0),copy_bala->setTiempo(2);bala->getTiempo()<=100;bala->setTiempo(bala->getTiempo()+0.5),copy_bala->setTiempo(copy_bala->getTiempo()+0.5)){
 
            x = posx + Vx * bala->getTiempo();
            y = posy + Vy*bala->getTiempo() - (0.5*bala->getG()*bala->getTiempo()*bala->getTiempo());
