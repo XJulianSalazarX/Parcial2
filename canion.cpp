@@ -58,7 +58,7 @@ bool Canion::simularDisparo(float angle, float x_, float y_)
 {
     float Vx=0,Vy=0,x,y;
     //for(Vo=50;Vo<=500;Vo++){
-    for(bala->setV_inicial(50);bala->getV_inicial()<500;bala->setV_inicial(bala->getV_inicial()+1)){
+    for(bala->setV_inicial(50);bala->getV_inicial()<350;bala->setV_inicial(bala->getV_inicial()+1)){
         Vx = bala->getV_inicial()*cos(angle);
         Vy = bala->getV_inicial()*sin(angle);
         //for(float t=0;t<100;t++){

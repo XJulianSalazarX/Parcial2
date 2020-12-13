@@ -4,7 +4,6 @@
 #include<stdlib.h>
 #include<time.h>
 
-//#define pi 3.14159265358979323846
 using namespace std;
 
 int main()

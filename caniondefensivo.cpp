@@ -15,7 +15,7 @@ bool CanionDefensivo::simularDispDefensivo(float angle,Bala balaE)
     VxE = copy_bala->getV_inicial()*cos(copy_bala->getAngulo());
     VyE = copy_bala->getV_inicial()*sin(copy_bala->getAngulo());
 
-    for(bala->setV_inicial(50);bala->getV_inicial()<500;bala->setV_inicial(bala->getV_inicial()+1)){
+    for(bala->setV_inicial(50);bala->getV_inicial()<=350;bala->setV_inicial(bala->getV_inicial()+1)){
 
         Vx = bala->getV_inicial()*cos(angle);
         Vy = bala->getV_inicial()*sin(angle);
@@ -48,7 +48,7 @@ bool CanionDefensivo::simularDispDefensivo2(float angle,Bala balaE)
     VxE = copy_bala->getV_inicial()*cos(copy_bala->getAngulo());
     VyE = copy_bala->getV_inicial()*sin(copy_bala->getAngulo());
 
-    for(bala->setV_inicial(50);bala->getV_inicial()<500;bala->setV_inicial(bala->getV_inicial()+1)){
+    for(bala->setV_inicial(50);bala->getV_inicial()<=350;bala->setV_inicial(bala->getV_inicial()+1)){
 
         Vx = bala->getV_inicial()*cos(angle);
         Vy = bala->getV_inicial()*sin(angle);

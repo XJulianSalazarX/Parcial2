@@ -5,6 +5,8 @@
 
 class CanionOfensivo: public Canion
 {
+private:
+    Bala *apoyo;
 public:
     CanionOfensivo();
     bool simularDispOfensivo(float angle,Bala balaE);
