@@ -107,7 +107,7 @@ bool CanionOfensivo::simularDispOfensivo(float angle,Bala balaE)
            yA = posy + VyA*bala->getTiempo() - (0.5*bala->getG()*bala->getTiempo()*bala->getTiempo());
 
            if(sqrt(pow((x-xE),2)+pow((y-yE),2))<=apoyo->getRadio() and sqrt(pow((posx-xE),2)+pow((posy-yE),2))>copy_bala->getRadio()){
-               if(y>0 and sqrt(pow((x-copy_bala->getPosx()),2)+pow((y-copy_bala->getPosy()),2))>apoyo->getRadio()){
+               if(y>0 and sqrt(pow((x-xA),2)+pow((y-yA),2))>apoyo->getRadio() and x>xA){
                    apoyo->setAngulo(angle);
                    delete copy_bala;
                    return true;
