@@ -38,9 +38,15 @@ void Canion::setPosy(float value)
     bala->setPosy(value);
 }
 
-void Canion::generarDisparo()
+void Canion::generarDisparo(float x_,float y_)
 {
-
+    cout << endl;
+    cout << "cordenadas canion ofensivo: ("<<posx<<","<<posy<<")"<<endl;
+    cout << "cordenadas canion defensivo: ("<<x_<<","<<y_<<")"<<endl;
+    cout << "Velocidad inical de la bala: "<<bala->getV_inicial()<<" m/s"<<endl;
+    cout << "angulo de disparo:" << bala->getAngulo()*180/pi << endl;
+    cout << "tiempo en el que la bala detona: "<<bala->getTiempo()<<" seg."<<endl;
+    cout << endl;
 }
 
 bool Canion::simularDisparo(float angle, float x_, float y_)

@@ -1,6 +1,11 @@
 #ifndef BALA_H
 #define BALA_H
+#include <iostream>
 #include <math.h>
+
+#define pi 3.14159265358979323846
+
+using namespace std;
 
 class Bala
 {

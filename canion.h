@@ -10,7 +10,7 @@ protected:
 public:
     Canion();
     bool simularDisparo(float angle,float x,float y);
-    void generarDisparo();
+    void generarDisparo(float x_,float y_);
     void radioDestruccion(float radio_);
     float getPosx() const;
     void setPosx(float value);

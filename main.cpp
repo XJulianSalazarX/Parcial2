@@ -4,7 +4,7 @@
 #include<stdlib.h>
 #include<time.h>
 
-#define pi 3.14159265358979323846
+//#define pi 3.14159265358979323846
 using namespace std;
 
 int main()
@@ -14,8 +14,8 @@ int main()
     //instancia de la clase CanionDefensivo
     CanionDefensivo *defensivo = new CanionDefensivo();
     short opc=0;
-    int angle = 0;
-     srand(time(NULL));
+    float angle = 0;
+    srand(time(NULL));
     cout << "Seliccione:" << endl;
     cout << "1. Probar caso 1." << endl;
     cout << "2. Probar caso 2." << endl;
@@ -35,7 +35,7 @@ int main()
             defensivo->setPosy(100);
             //distancia entre los dos cañones
             ofensivo->setDistance(defensivo->getPosx()-ofensivo->getPosx());
-            ofensivo->setDistance(defensivo->getPosx()-ofensivo->getPosx());
+            defensivo->setDistance(defensivo->getPosx()-ofensivo->getPosx());
             //radio de destruccion cañon ofensivo
             ofensivo->radioDestruccion(ofensivo->getDistance()*0.05);
             //for que se termina una vez se hayan generado tres disparos de manera efectiva
@@ -44,12 +44,10 @@ int main()
                 angle = 1 + rand() % ((90) - 1);
                 angle = angle*pi/180;
                 if(ofensivo->simularDisparo(angle,defensivo->getPosx(),defensivo->getPosy())){
+                    ofensivo->generarDisparo(defensivo->getPosx(),defensivo->getPosy());
                     i++;
                 }
             }
-            //generar numeros de manera aleatorio entre 1 y 89 que representan el angulo
-
-
         }
             break;
         case 2:{
