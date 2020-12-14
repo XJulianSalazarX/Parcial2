@@ -84,9 +84,18 @@ bool CanionDefensivo::simularDispDefensivo2(float angle,Bala balaE)
 void CanionDefensivo::disparoOfensivo()
 {
     cout << endl;
-    cout << "cordenadas canion que ataca: ("<<posx<<","<<posy<<")"<<endl;
-    cout << "Velocidad inical de la bala: "<<bala->getV_inicial()<<" m/s"<<endl;
-    cout << "angulo de disparo:" << bala->getAngulo()*180/pi << endl;
-    cout << "tiempo en el que la bala detona: "<<bala->getTiempo()<<" seg."<<endl;
+    cout << "cordenadas canion defensivo: ("<<posx<<","<<posy<<")"<<endl;
+    cout << "Velocidad inical de la bala: "<<bala->getV_inicial()<<" m/s."<<endl;
+    cout << "angulo de disparo:" << bala->getAngulo()*180/pi<< " angulos." << endl;
+    cout << "Tiempo en el que se espera que detone la bala: "<<bala->getTiempo()<<" seg."<<endl;
     cout << endl;
+}
+
+void CanionDefensivo::Informe(bool objetivo)
+{
+    cout << endl;
+    cout << "------------ Parametros de la bala defensiva ------------" << endl;
+    disparoOfensivo();
+    cout << "------------------ Resultados de la bala ------------------" << endl;
+    bala->Datos(objetivo);
 }

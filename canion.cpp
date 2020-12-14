@@ -85,9 +85,6 @@ void Canion::Datos(bool objetivo,float x_,float y_)
     generarDisparo(x_,y_);
     cout << "------------------ Resultados de la bala ------------------" << endl;
     bala->Datos(objetivo);
-
-
-
 }
 
 void Canion::destruirBala()

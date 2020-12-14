@@ -99,4 +99,9 @@ void Bala::Datos(bool objetivo)
        cout << "...Objetivo conseguido..." << endl;
        cout << endl;
    }
+   else{
+       cout << "...La bala ha sido destruida..." << endl;
+       cout << "...Objetivo NO conseguido..." << endl;
+       cout << endl;
+   }
 }

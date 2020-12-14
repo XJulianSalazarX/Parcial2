@@ -70,11 +70,36 @@ bool CanionOfensivo::simularDispOfensivo(float angle,Bala balaE)
 void CanionOfensivo::disparoOfensivo()
 {
     cout << endl;
-    cout << "----------------------------------------------------" << endl;
-    cout << "cordenadas canion que ataca: ("<<posx<<","<<posy<<")"<<endl;
+    cout << "cordenadas canion ofensivo: ("<<posx<<","<<posy<<")"<<endl;
     cout << "Velocidad inical de la bala: "<<apoyo->getV_inicial()<<" m/s"<<endl;
     cout << "angulo de disparo: " << apoyo->getAngulo()*180/pi<< endl;
-    cout << "tiempo en el que la bala detona: "<<apoyo->getTiempo()<<" seg."<<endl;
+    cout << "tiempo en el que se estima la bala detode "<<apoyo->getTiempo()<<" seg."<<endl;
     cout << endl;
+}
+
+void CanionOfensivo::balaApoyo(bool objetivo)
+{
+    if(objetivo){
+        cout << "Tiempo en el que detona la bala: " << apoyo->getTiempo() << " seg." << endl;
+        cout << "Cordenadas de detonacion: ("<<posx+apoyo->getV_inicial()*cos(apoyo->getAngulo())*apoyo->getTiempo()<<","<<
+                posy+apoyo->getV_inicial()*sin(apoyo->getTiempo())*apoyo->getTiempo()-(0.5*apoyo->getG()*apoyo->getTiempo()*apoyo->getTiempo())<<")"<<endl;
+        cout << "...Objetivo conseguido..." << endl;
+        cout << endl;
+    }
+    else{
+        cout << "...La bala ha sido destruida..." << endl;
+        cout << "...Objetivo NO conseguido..." << endl;
+        cout << endl;
+    }
+}
+
+void CanionOfensivo::informe(bool objetivo)
+{
+    cout << endl;
+    cout << "-------------- Parametros segunda bala ofensiva --------------" << endl;
+    disparoOfensivo();
+    cout << "------------------ Resultados de la bala ------------------" << endl;
+    balaApoyo(objetivo);
+
     delete apoyo;
 }

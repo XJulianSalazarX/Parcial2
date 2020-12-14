@@ -10,6 +10,8 @@ public:
     CanionOfensivo();
     bool simularDispOfensivo(float angle,Bala balaE);
     void disparoOfensivo();
+    void balaApoyo(bool objetivo);
+    void informe(bool objetivo);
 };
 
 #endif // CANIONOFENSIVO_H

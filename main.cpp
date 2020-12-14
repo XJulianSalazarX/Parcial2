@@ -49,7 +49,8 @@ int main()
                 angle = angle*pi/180;
 
                 if(ofensivo->simularDisparo(angle,defensivo->getPosx(),defensivo->getPosy(),0.05)){
-                    //ofensivo->generarDisparo(defensivo->getPosx(),defensivo->getPosy());
+
+                    cout << "\nSimulacion " << i+1 << ": " << endl;
                     ofensivo->Datos(true,defensivo->getPosx(),defensivo->getPosy());
                     ofensivo->destruirBala();
                     i++;
@@ -78,7 +79,8 @@ int main()
                 angle = angle*pi/180;
 
                 if(defensivo->simularDisparo(angle,ofensivo->getPosx(),ofensivo->getPosy(),0.025)){
-                    //defensivo->generarDisparo(ofensivo->getPosx(),ofensivo->getPosy());
+
+                    cout << "\nSimulacion " << i+1 << ": " << endl;
                     defensivo->Datos(true,ofensivo->getPosx(),ofensivo->getPosy());
                     defensivo->destruirBala();
                     i++;
@@ -107,7 +109,8 @@ int main()
                 angle = angle*pi/180;
 
                 if(ofensivo->simularDisparo(angle,defensivo->getPosx(),defensivo->getPosy(),0.05)){
-                    ofensivo->generarDisparo(defensivo->getPosx(),defensivo->getPosy());
+                    cout << "\nTiro hecho por el canion ofensivo:" << endl;
+                    ofensivo->Datos(false,defensivo->getPosx(),defensivo->getPosy());
                     break;
                 }
             }
@@ -119,7 +122,8 @@ int main()
                  angle = 91 + rand() % ((180) - 91);
                  angle = angle*pi/180;
                  if(defensivo->simularDispDefensivo(angle,ofensivo->copyBala())){
-                     defensivo->disparoOfensivo();
+                     cout << "Simulacion de defensa " << i+1 << ": " << endl;
+                     defensivo->Informe(true);
                      defensivo->destruirBala();
                      i++;
                  }
@@ -149,7 +153,8 @@ int main()
                 angle = angle*pi/180;
 
                 if(ofensivo->simularDisparo(angle,defensivo->getPosx(),defensivo->getPosy(),0.05)){
-                    ofensivo->generarDisparo(defensivo->getPosx(),defensivo->getPosy());
+                    cout << "\nTiro hecho por el canion ofensivo:" << endl;
+                    ofensivo->Datos(false,defensivo->getPosx(),defensivo->getPosy());
                     break;
                 }
             }
@@ -162,7 +167,8 @@ int main()
                  angle = angle*pi/180;
 
                  if(defensivo->simularDispDefensivo2(angle,ofensivo->copyBala())){
-                     defensivo->disparoOfensivo();
+                     cout << "Simulacion de defensa " << i+1 << ": " << endl;
+                     defensivo->Informe(true);
                      defensivo->destruirBala();
                      i++;
                  }
@@ -176,7 +182,7 @@ int main()
             ofensivo->setPosy(300);
 
             //posición del cañon defensivo
-            defensivo->setPosx(1000);
+            defensivo->setPosx(500);
             defensivo->setPosy(200);
 
             //distancia entre los dos cañones
@@ -189,7 +195,8 @@ int main()
                 angle = angle*pi/180;
 
                 if(ofensivo->simularDisparo(angle,defensivo->getPosx(),defensivo->getPosy(),0.05)){
-                    ofensivo->generarDisparo(defensivo->getPosx(),defensivo->getPosy());
+                    cout << "\nTiro hecho por el canion ofensivo:" << endl;
+                    ofensivo->Datos(false,defensivo->getPosx(),defensivo->getPosy());
                     break;
                 }
             }
@@ -201,7 +208,8 @@ int main()
                  angle = angle*pi/180;
 
                  if(defensivo->simularDispDefensivo2(angle,ofensivo->copyBala())){
-                     defensivo->disparoOfensivo();
+                     cout << "\nTiro hecho por el canion defensivo:" << endl;
+                     defensivo->Informe(false);
                      break;
                  }
             }
@@ -212,11 +220,19 @@ int main()
                 angle = angle*pi/180;
 
                     if(ofensivo->simularDispOfensivo(angle,defensivo->copyBala())){
-                        ofensivo->disparoOfensivo();
+                       cout << "\nSimulacion de defender bala ofensiva " << flag+1 << ":\n" << endl;
+                        ofensivo->informe(true);
                         flag ++;
                     }
                     angle= angle*180/pi;
                     if(flag==3) break;
+            }
+            if(flag == 0)
+                cout << "Error.\n la bala del canion defensivo no puede ser detenina.\n" << endl;
+
+            else if(flag < 3){
+                cout << "Error.\n la bala del canion defensivo solo pudo ser detenida: " << flag << " veces.\n";
+                cout << endl;
             }
             ofensivo->destruirBala();
             defensivo->destruirBala();
