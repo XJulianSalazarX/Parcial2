@@ -26,10 +26,10 @@ int main()
     while(opc!=0){
         switch (opc) {
         case 1:{
-            //posicon del cañon ofensivo
+            //posición del cañon ofensivo
             ofensivo->setPosx(0);
             ofensivo->setPosy(0);
-            //poscion del cañon defensivo
+            //posición del cañon defensivo
             defensivo->setPosx(500);
             defensivo->setPosy(100);
             //distancia entre los dos cañones
@@ -50,10 +50,10 @@ int main()
         }
             break;
         case 2:{
-            //posicon del cañon ofensivo
+            //posición del cañon ofensivo
             ofensivo->setPosx(0);
             ofensivo->setPosy(100);
-            //poscion del cañon defensivo
+            //posición del cañon defensivo
             defensivo->setPosx(1000);
             defensivo->setPosy(100);
             //distancia entre los dos cañones
@@ -75,10 +75,10 @@ int main()
         }
             break;
         case 3:{
-            //posicon del cañon ofensivo
+            //posición del cañon ofensivo
             ofensivo->setPosx(0);
             ofensivo->setPosy(100);
-            //poscion del cañon defensivo
+            //posición del cañon defensivo
             defensivo->setPosx(1000);
             defensivo->setPosy(100);
             //distancia entre los dos cañones
@@ -110,10 +110,10 @@ int main()
             break;
         case 4:{
 
-            //posicon del cañon ofensivo
+            //posición del cañon ofensivo
             ofensivo->setPosx(0);
             ofensivo->setPosy(50);
-            //poscion del cañon defensivo
+            //posición del cañon defensivo
             defensivo->setPosx(900);
             defensivo->setPosy(100);
             //distancia entre los dos cañones
@@ -144,10 +144,10 @@ int main()
         }
             break;
         case 5:{
-            //posicon del cañon ofensivo
+            //posición del cañon ofensivo
             ofensivo->setPosx(0);
             ofensivo->setPosy(300);
-            //poscion del cañon defensivo
+            //posición del cañon defensivo
             defensivo->setPosx(1000);
             defensivo->setPosy(200);
             //distancia entre los dos cañones

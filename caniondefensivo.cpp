@@ -28,7 +28,9 @@ bool CanionDefensivo::simularDispDefensivo(float angle,Bala balaE)
            yE = copy_bala->getPosy() + VyE*copy_bala->getTiempo() -(0.5*copy_bala->getG()*copy_bala->getTiempo()*copy_bala->getTiempo());
 
            if(sqrt(pow((x-xE),2)+pow((y-yE),2))<=bala->getRadio() and sqrt(pow((posx-xE),2)+pow((posy-yE),2))>copy_bala->getRadio()){
+
                if(y>0){
+
                    bala->setAngulo(angle);
                    delete copy_bala;
                    return true;
@@ -62,7 +64,9 @@ bool CanionDefensivo::simularDispDefensivo2(float angle,Bala balaE)
            yE = copy_bala->getPosy() + VyE*copy_bala->getTiempo() -(0.5*copy_bala->getG()*copy_bala->getTiempo()*copy_bala->getTiempo());
 
            if(sqrt(pow((x-xE),2)+pow((y-yE),2))<=bala->getRadio() and sqrt(pow((posx-xE),2)+pow((posy-yE),2))>copy_bala->getRadio()){
+
                if(y>0 and sqrt(pow((x-copy_bala->getPosx()),2)+pow((y-copy_bala->getPosy()),2))>bala->getRadio()){
+
                    bala->setAngulo(angle);
                    delete copy_bala;
                    return true;
