@@ -5,6 +5,11 @@ CanionDefensivo::CanionDefensivo()
 
 }
 
+CanionDefensivo::~CanionDefensivo()
+{
+    delete bala;
+}
+
 bool CanionDefensivo::simularDispDefensivo(float angle,Bala balaE)
 {
     bala = new Bala(posx,posy,distance,0.025);

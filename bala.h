@@ -14,6 +14,7 @@ private:
 public:
     //constructores
     Bala();
+
     Bala(float posx_,float posy_,float distance_, float radio_);
 
     //mostrar en consola datos de la bala

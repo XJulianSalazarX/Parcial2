@@ -5,6 +5,13 @@ CanionOfensivo::CanionOfensivo()
 
 }
 
+CanionOfensivo::~CanionOfensivo()
+{
+    delete bala;
+    delete apoyo;
+
+}
+
 bool CanionOfensivo::simularDispOfensivo(float angle,Bala balaE)
 {
     Bala *copy_bala = new Bala(balaE);

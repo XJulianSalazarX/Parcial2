@@ -8,6 +8,8 @@ class CanionDefensivo: public Canion
 public:
     //constructor
     CanionDefensivo();
+    //destructor
+    ~CanionDefensivo();
 
     //simular un disparo de defensa
     bool simularDispDefensivo(float angle,Bala balaE);

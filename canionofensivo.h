@@ -9,6 +9,8 @@ private:
 public:
     //constructor
     CanionOfensivo();
+    //destructor
+    ~CanionOfensivo();
 
     //simullar un disparo para derribar la bala del cañon defensivo
     bool simularDispOfensivo(float angle,Bala balaE);

@@ -37,7 +37,7 @@ void Simulacion::Menu()
                 GenerarTresDispOfensivos();
             }
             else
-                cout << "las cordenadas deben ser positivas.\n"
+                cout << "ERROR.\nlas cordenadas deben ser positivas.\n"
                 "la altura maxima de los caiones es de 1000 m.\n"
                 " y la distancia entre ambos caniones debe ser >= 500 y <= 10000.\n";
 
@@ -49,9 +49,9 @@ void Simulacion::Menu()
                 GenerarTresDispDefensivos();
             }
             else
-                cout << "las cordenadas deben ser positivas.\n"
+                cout << "ERROR.\nlas cordenadas deben ser positivas.\n"
                 "la altura maxima de los caiones es de 1000 m.\n"
-                " y la distancia entre ambos caniones debe ser >= 500 y <= 10000.\n";
+                " y la distancia entre ambos caniones debe ser >= 500 y <= 3000.\n";
 
         }
             break;
@@ -61,9 +61,9 @@ void Simulacion::Menu()
                 GenerarTresDispDeDefensa();
             }
             else
-                cout << "las cordenadas deben ser positivas.\n"
-                "la altura maxima de los caiones es de 1000 m.\n"
-                " y la distancia entre ambos caniones debe ser >= 500 y <= 10000.\n";
+                cout << "ERROR.\nlas cordenadas deben ser positivas.\n"
+                "la altura maxima de los caniones es de 1000 m.\n"
+                " y la distancia entre ambos caniones debe ser >= 500 y <= 3000.\n";
         }
             break;
         case 4:{
@@ -72,9 +72,9 @@ void Simulacion::Menu()
                 GenerarTresDispdeDefensa2();
             }
             else
-                cout << "las cordenadas deben ser positivas.\n"
-                "la altura maxima de los caiones es de 1000 m.\n"
-                " y la distancia entre ambos caniones debe ser >= 500 y <= 10000.\n";
+                cout << "ERROR.\nlas cordenadas deben ser positivas.\n"
+                "la altura maxima de los caniones es de 1000 m.\n"
+                " y la distancia entre ambos caniones debe ser >= 500 y <= 3000.\n";
         }
             break;
         case 5:{
@@ -83,15 +83,16 @@ void Simulacion::Menu()
                 GenerarDispApoyoOfensivo();
             }
             else
-                cout << "las cordenadas deben ser positivas.\n"
-                "la altura maxima de los caiones es de 1000 m.\n"
-                " y la distancia entre ambos caniones debe ser >= 500 y <= 10000.\n";
+                cout << "ERROR.\nlas cordenadas deben ser positivas.\n"
+                "la altura maxima de los caniones es de 1000 m.\n"
+                " y la distancia entre ambos caniones debe ser >= 500 y <= 3000.\n";
         }
             break;
         default:
             cout << "Opcion no valida.\n";
 
         }
+        cout << endl;
         cout << "Seleccione:" << endl;
         cout << "1. Generar tres disparos canion ofensivo." << endl;
         cout << "2. Generar tres disparos canion defensivo." << endl;
@@ -117,18 +118,19 @@ void Simulacion::PedirDatos()
     defensivo->setPosx(num);
     cout << "Ingrese la posicion y del canion defensivo: ";
     cin >> num;
-    defensivo->setPosx(num);
+    defensivo->setPosy(num);
 }
 
 bool Simulacion::comprobarDistancia()
 {
 
+    cout << "distancia: " << abs(defensivo->getPosx()-ofensivo->getPosx()) << endl;
     if(defensivo->getPosy()>1000 or defensivo->getPosy()>1000)
         return false;
-    else if(abs(defensivo->getPosx()-ofensivo->getPosx())>10000 or abs(defensivo->getPosx()-ofensivo->getPosx())<500)
+    else if(abs(defensivo->getPosx()-ofensivo->getPosx())>3000 or abs(defensivo->getPosx()-ofensivo->getPosx())<500)
         return false;
-    else if(defensivo->getPosy()<0 or defensivo->getPosy()<0 or defensivo->getPosy()<0 or defensivo->getPosy()<0)
-            return false;
+    else if(ofensivo->getPosy()<0 or ofensivo->getPosx()<0 or defensivo->getPosy()<0 or defensivo->getPosx()<0)
+         return false;
 
     return true;
 }
@@ -199,4 +201,202 @@ void Simulacion::GenerarTresDispDefensivos()
         }
     }
 
+}
+
+void Simulacion::GenerarTresDispDeDefensa()
+{
+    //distancia entre los dos cañones
+    ofensivo->setDistance(abs(defensivo->getPosx()-ofensivo->getPosx()));
+    defensivo->setDistance(abs(defensivo->getPosx()-ofensivo->getPosx()));
+
+    //rango de los angulos
+    if(ofensivo->getPosx()<defensivo->getPosx()){
+        a_menor = 1;
+        a_mayor = 90;
+    }
+    else{
+        a_menor = 91;
+        a_mayor = 180;
+    }
+
+    //generar un disparo ofensivo efectivo
+    while(true){
+
+        //generar numeros de manera aleatorio que representan el angulo
+        angle = a_menor + rand() % ((a_mayor) - a_menor);
+        angle = angle*pi/180;
+
+        if(ofensivo->simularDisparo(angle,defensivo->getPosx(),defensivo->getPosy(),0.05)){
+            cout << "\nTiro hecho por el canion ofensivo:" << endl;
+            ofensivo->Datos(false,defensivo->getPosx(),defensivo->getPosy());
+            break;
+        }
+    }
+
+    //rango de los angulos
+    if(ofensivo->getPosx()<defensivo->getPosx()){
+        a_menor = 91;
+        a_mayor = 180;
+    }
+    else{
+        a_menor = 1;
+        a_mayor = 90;
+    }
+
+    //ciclo que finaliza una vez se hayan generado tres disparos de manera efectiva
+    for(short i=0;i<3;){
+
+        //generar numeros de manera aleatorio entre 91 y 180 que representan el angulo
+        angle = a_menor + rand() % ((a_mayor) - a_menor);
+        angle = angle*pi/180;
+        if(defensivo->simularDispDefensivo(angle,ofensivo->copyBala())){
+            cout << "Simulacion de defensa " << i+1 << ": " << endl;
+            defensivo->Informe(true);
+            defensivo->destruirBala();
+            i++;
+        }
+    }
+    ofensivo->destruirBala();
+}
+
+void Simulacion::GenerarTresDispdeDefensa2()
+{
+    //distancia entre los dos cañones
+    ofensivo->setDistance(abs(defensivo->getPosx()-ofensivo->getPosx()));
+    defensivo->setDistance(abs(defensivo->getPosx()-ofensivo->getPosx()));
+
+    //rango de los angulos
+    if(ofensivo->getPosx()<defensivo->getPosx()){
+        a_menor = 1;
+        a_mayor = 90;
+    }
+    else{
+        a_menor = 91;
+        a_mayor = 180;
+    }
+
+    while(true){
+
+        //generar numeros de manera aleatorio entre 91 y 180 que representan el angulo
+        angle = a_menor + rand() % ((a_mayor) - a_menor);
+        angle = angle*pi/180;
+
+        if(ofensivo->simularDisparo(angle,defensivo->getPosx(),defensivo->getPosy(),0.05)){
+            cout << "\nTiro hecho por el canion ofensivo:" << endl;
+            ofensivo->Datos(false,defensivo->getPosx(),defensivo->getPosy());
+            break;
+        }
+    }
+
+    //rango de los angulos
+    if(ofensivo->getPosx()<defensivo->getPosx()){
+        a_menor = 91;
+        a_mayor = 180;
+    }
+    else{
+        a_menor = 1;
+        a_mayor = 90;
+    }
+
+    //ciclo que finaliza una vez se hayan generado tres disparos de manera efectiva
+    for(short i=0;i<3;){
+
+        //generar numeros de manera aleatorio entre 1 y 89 que representan el angulo
+        angle = a_menor + rand() % ((a_mayor) - a_menor);
+        angle = angle*pi/180;
+
+        if(defensivo->simularDispDefensivo2(angle,ofensivo->copyBala())){
+            cout << "Simulacion de defensa " << i+1 << ": " << endl;
+            defensivo->Informe(true);
+            defensivo->destruirBala();
+            i++;
+        }
+    }
+    ofensivo->destruirBala();
+}
+
+void Simulacion::GenerarDispApoyoOfensivo()
+{
+    //distancia entre los dos cañones
+    ofensivo->setDistance(abs(defensivo->getPosx()-ofensivo->getPosx()));
+    defensivo->setDistance(abs(defensivo->getPosx()-ofensivo->getPosx()));
+
+    //rango de los angulos
+    if(ofensivo->getPosx()<defensivo->getPosx()){
+        a_menor = 1;
+        a_mayor = 90;
+    }
+    else{
+        a_menor = 91;
+        a_mayor = 180;
+    }
+
+    while(true){
+
+        angle = a_menor + rand() % ((a_mayor) - a_menor);
+        angle = angle*pi/180;
+
+        if(ofensivo->simularDisparo(angle,defensivo->getPosx(),defensivo->getPosy(),0.05)){
+            cout << "\nTiro hecho por el canion ofensivo:" << endl;
+            ofensivo->Datos(false,defensivo->getPosx(),defensivo->getPosy());
+            break;
+        }
+    }
+
+    //rango de los angulos
+    if(ofensivo->getPosx()<defensivo->getPosx()){
+        a_menor = 91;
+        a_mayor = 180;
+    }
+    else{
+        a_menor = 1;
+        a_mayor = 90;
+    }
+
+    //generar un disparo defensivo efectivo
+    while(true){
+
+        //generar numeros de manera aleatorio entre 1 y 89 que representan el angulo
+        angle = a_menor + rand() % ((a_mayor) - a_menor);
+        angle = angle*pi/180;
+
+        if(defensivo->simularDispDefensivo2(angle,ofensivo->copyBala())){
+            cout << "\nTiro hecho por el canion defensivo:" << endl;
+            defensivo->Informe(false);
+            break;
+        }
+    }
+
+    //rango de los angulos
+    if(ofensivo->getPosx()<defensivo->getPosx()){
+        a_menor = 1;
+        a_mayor = 90;
+    }
+    else{
+        a_menor = 91;
+        a_mayor = 180;
+    }
+
+    short flag = 0;
+    for(angle=a_menor;angle<a_mayor;angle++){
+
+        angle = angle*pi/180;
+
+        if(ofensivo->simularDispOfensivo(angle,defensivo->copyBala())){
+            cout << "\nSimulacion de defender bala ofensiva " << flag+1 << ":\n" << endl;
+            ofensivo->informe(true);
+            flag ++;
+        }
+        angle= angle*180/pi;
+        if(flag==3) break;
+    }
+    if(flag == 0)
+        cout << "Error.\n la bala del canion defensivo no puede ser detenina.\n" << endl;
+
+    else if(flag < 3){
+        cout << "Error.\n la bala del canion defensivo solo pudo ser detenida: " << flag << " veces.\n";
+        cout << endl;
+    }
+    ofensivo->destruirBala();
+    defensivo->destruirBala();
 }
