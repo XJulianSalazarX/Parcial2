@@ -12,11 +12,14 @@ class Bala
 private:
     float V_inicial,angulo,posx,posy,distance,radio,tiempo,g;
 public:
+    //constructores
     Bala();
     Bala(float posx_,float posy_,float distance_, float radio_);
 
+    //mostrar en consola datos de la bala
     void Datos(bool objetivo);
 
+    //funciones getter and setter
     float getDistance() const;
     void setDistance(float value);
     float getRadio() const;
