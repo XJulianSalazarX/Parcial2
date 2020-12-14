@@ -2,7 +2,7 @@
 
 CanionOfensivo::CanionOfensivo()
 {
-    bala = new Bala();
+
 }
 
 bool CanionOfensivo::simularDispOfensivo(float angle,Bala balaE)
@@ -26,7 +26,7 @@ bool CanionOfensivo::simularDispOfensivo(float angle,Bala balaE)
     VxA = bala->getV_inicial()*cos(bala->getAngulo());
     VyA = bala->getV_inicial()*sin(bala->getAngulo());
 
-    for(apoyo->setV_inicial(50);apoyo->getV_inicial()<=500;apoyo->setV_inicial(apoyo->getV_inicial()+1)){
+    for(apoyo->setV_inicial(100);apoyo->getV_inicial()<=500;apoyo->setV_inicial(apoyo->getV_inicial()+1)){
 
         Vx = apoyo->getV_inicial()*cos(angle);
         Vy = apoyo->getV_inicial()*sin(angle);
@@ -47,7 +47,9 @@ bool CanionOfensivo::simularDispOfensivo(float angle,Bala balaE)
            xA = posx + VxA * bala->getTiempo();
            yA = posy + VyA*bala->getTiempo() - (0.5*bala->getG()*bala->getTiempo()*bala->getTiempo());
 
-           if(sqrt(pow((xA-xE),2)+pow((yA-yE),2))<=copy_bala->getRadio()) break;
+           if(sqrt(pow((xA-xE),2)+pow((yA-yE),2))<=copy_bala->getRadio()){
+               break;
+           }
 
            else if(sqrt(pow((x-xE),2)+pow((y-yE),2))<=apoyo->getRadio() and sqrt(pow((posx-xE),2)+pow((posy-yE),2))>copy_bala->getRadio()){
                if(y>0 and sqrt(pow((x-xA),2)+pow((y-yA),2))>apoyo->getRadio()){
@@ -57,6 +59,7 @@ bool CanionOfensivo::simularDispOfensivo(float angle,Bala balaE)
                }
            }
            copy_bala->setTiempo(copy_bala->getTiempo()+0.5);
+           bala->setTiempo(bala->getTiempo()+0.5);
         }
     }
     delete apoyo;

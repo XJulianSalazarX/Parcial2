@@ -1,5 +1,20 @@
 #include "bala.h"
 
+Bala::Bala()
+{
+    g = 9.81;
+}
+
+Bala::Bala(float posx_, float posy_, float distance_, float radio_)
+{
+
+    posx = posx_;
+    posy = posy_;
+    distance = distance_;
+    radio = distance*radio_;
+    g = 9.81;
+}
+
 float Bala::getDistance() const
 {
     return distance;
@@ -73,9 +88,4 @@ float Bala::getTiempo() const
 void Bala::setTiempo(float value)
 {
     tiempo = value;
-}
-
-Bala::Bala()
-{
-    g = 9.81;
 }

@@ -9,9 +9,10 @@ protected:
     Bala *bala;
 public:
     Canion();
-    bool simularDisparo(float angle,float x,float y);
+    bool simularDisparo(float angle,float x,float y,float radio_);
     void generarDisparo(float x_,float y_);
-    void radioDestruccion(float radio_);
+    void destruirBala();
+   // void radioDestruccion(float radio_);
     float getPosx() const;
     void setPosx(float value);
     float getPosy() const;

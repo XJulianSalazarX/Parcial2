@@ -13,6 +13,7 @@ private:
     float V_inicial,angulo,posx,posy,distance,radio,tiempo,g;
 public:
     Bala();
+    Bala(float posx_,float posy_,float distance_, float radio_);
 
     void Disparar();
     float getDistance() const;

@@ -2,16 +2,16 @@
 
 CanionDefensivo::CanionDefensivo()
 {
-    bala = new Bala();
+
 }
 
 bool CanionDefensivo::simularDispDefensivo(float angle,Bala balaE)
 {
+    bala = new Bala(posx,posy,distance,0.025);
     Bala *copy_bala = new Bala(balaE);
-    float Vx=0,Vy=0,x=0,y=0,xE,yE,VxE,VyE;
+    float Vx=0,Vy=0,x=0,y=0,xE=0,yE=0,VxE=0,VyE=0;
 
-    //velocidad inicail de la vala enemiga
-
+    //velocidad inicil de la vala enemiga
     VxE = copy_bala->getV_inicial()*cos(copy_bala->getAngulo());
     VyE = copy_bala->getV_inicial()*sin(copy_bala->getAngulo());
 
@@ -38,12 +38,14 @@ bool CanionDefensivo::simularDispDefensivo(float angle,Bala balaE)
            }
         }
     }
+    delete bala;
     delete copy_bala;
     return false;
 }
 
 bool CanionDefensivo::simularDispDefensivo2(float angle,Bala balaE)
 {
+    bala = new Bala(posx,posy,distance,0.025);
     Bala *copy_bala = new Bala(balaE);
     float Vx=0,Vy=0,x=0,y=0,xE,yE,VxE,VyE;
 
@@ -74,6 +76,7 @@ bool CanionDefensivo::simularDispDefensivo2(float angle,Bala balaE)
            }
         }
     }
+    delete bala;
     delete copy_bala;
     return false;
 }

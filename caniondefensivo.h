@@ -1,7 +1,6 @@
 #ifndef CANIONDEFENSIVO_H
 #define CANIONDEFENSIVO_H
 #include "canion.h"
-#include "canionofensivo.h"
 
 class CanionDefensivo: public Canion
 {
