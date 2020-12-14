@@ -8,10 +8,12 @@ SOURCES += \
         canion.cpp \
         caniondefensivo.cpp \
         canionofensivo.cpp \
-        main.cpp
+        main.cpp \
+        simulacion.cpp
 
 HEADERS += \
     bala.h \
     canion.h \
     caniondefensivo.h \
-    canionofensivo.h
+    canionofensivo.h \
+    simulacion.h
