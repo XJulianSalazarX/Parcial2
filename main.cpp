@@ -16,6 +16,7 @@ int main()
     short opc=0;
     float angle = 0;
     srand(time(NULL));
+
     cout << "Seleccione:" << endl;
     cout << "1. Probar caso 1." << endl;
     cout << "2. Probar caso 2." << endl;
@@ -24,6 +25,7 @@ int main()
     cout << "5. Probar caso 5." << endl;
     cout << "0. salir." << endl;
     cout << "Eliga una opcion: ";cin >> opc;
+
     while(opc!=0){
         switch (opc) {
         case 1:{
@@ -47,7 +49,8 @@ int main()
                 angle = angle*pi/180;
 
                 if(ofensivo->simularDisparo(angle,defensivo->getPosx(),defensivo->getPosy(),0.05)){
-                    ofensivo->generarDisparo(defensivo->getPosx(),defensivo->getPosy());
+                    //ofensivo->generarDisparo(defensivo->getPosx(),defensivo->getPosy());
+                    ofensivo->Datos(true,defensivo->getPosx(),defensivo->getPosy());
                     ofensivo->destruirBala();
                     i++;
                 }
@@ -75,7 +78,8 @@ int main()
                 angle = angle*pi/180;
 
                 if(defensivo->simularDisparo(angle,ofensivo->getPosx(),ofensivo->getPosy(),0.025)){
-                    defensivo->generarDisparo(ofensivo->getPosx(),ofensivo->getPosy());
+                    //defensivo->generarDisparo(ofensivo->getPosx(),ofensivo->getPosy());
+                    defensivo->Datos(true,ofensivo->getPosx(),ofensivo->getPosy());
                     defensivo->destruirBala();
                     i++;
                 }
@@ -231,5 +235,7 @@ int main()
         cout << "0. salir." << endl;
         cout << "Eliga una opcion: ";cin >> opc;
     }
+    delete defensivo;
+    delete ofensivo;
     return 0;
 }

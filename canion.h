@@ -12,7 +12,8 @@ public:
     bool simularDisparo(float angle,float x,float y,float radio_);
     void generarDisparo(float x_,float y_);
     void destruirBala();
-   // void radioDestruccion(float radio_);
+    void Datos(bool objetivo,float x_,float y_);
+
     float getPosx() const;
     void setPosx(float value);
     float getPosy() const;

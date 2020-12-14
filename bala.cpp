@@ -89,3 +89,14 @@ void Bala::setTiempo(float value)
 {
     tiempo = value;
 }
+
+void Bala::Datos(bool objetivo)
+{
+   if(objetivo){
+       cout << "Tiempo en el que detona la bala: " << tiempo << " seg." << endl;
+       cout << "Cordenadas de detonacion: ("<<posx+V_inicial*cos(angulo)*tiempo<<","<<
+       posy+V_inicial*sin(angulo)*tiempo-(0.5*g*tiempo*tiempo)<<")"<<endl;
+       cout << "...Objetivo conseguido..." << endl;
+       cout << endl;
+   }
+}

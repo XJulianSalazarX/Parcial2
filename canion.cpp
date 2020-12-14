@@ -70,13 +70,24 @@ bool Canion::simularDisparo(float angle, float x_, float y_,float radio_)
 
 void Canion::generarDisparo(float x_,float y_)
 {
+    cout << "Cordenadas canion que ataca: ("<<posx<<","<<posy<<")"<<endl;
+    cout << "Cordenadas del objetivo: ("<<x_<<","<<y_<<")"<<endl;
+    cout << "Velocidad inical de la bala: "<<bala->getV_inicial()<<" m/s."<<endl;
+    cout << "Angulo de disparo: " << bala->getAngulo()*180/pi << " grados." << endl;
+    cout << "Tiempo en el que se espera que detone la bala: "<<bala->getTiempo()<<" seg."<<endl;
     cout << endl;
-    cout << "cordenadas canion que ataca: ("<<posx<<","<<posy<<")"<<endl;
-    cout << "cordenadas canion que defiende: ("<<x_<<","<<y_<<")"<<endl;
-    cout << "Velocidad inical de la bala: "<<bala->getV_inicial()<<" m/s"<<endl;
-    cout << "angulo de disparo:" << bala->getAngulo()*180/pi << endl;
-    cout << "tiempo en el que la bala detona: "<<bala->getTiempo()<<" seg."<<endl;
+}
+
+void Canion::Datos(bool objetivo,float x_,float y_)
+{
     cout << endl;
+    cout << "------------ Parametros de la salida de la bala ------------" << endl;
+    generarDisparo(x_,y_);
+    cout << "------------------ Resultados de la bala ------------------" << endl;
+    bala->Datos(objetivo);
+
+
+
 }
 
 void Canion::destruirBala()

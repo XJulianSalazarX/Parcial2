@@ -15,7 +15,8 @@ public:
     Bala();
     Bala(float posx_,float posy_,float distance_, float radio_);
 
-    void Disparar();
+    void Datos(bool objetivo);
+
     float getDistance() const;
     void setDistance(float value);
     float getRadio() const;
