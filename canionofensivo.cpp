@@ -89,7 +89,7 @@ void CanionOfensivo::balaApoyo(bool objetivo)
     if(objetivo){
         cout << "Tiempo en el que detona la bala: " << apoyo->getTiempo() << " seg." << endl;
         cout << "Cordenadas de detonacion: ("<<posx+apoyo->getV_inicial()*cos(apoyo->getAngulo())*apoyo->getTiempo()<<","<<
-                posy+apoyo->getV_inicial()*sin(apoyo->getTiempo())*apoyo->getTiempo()-(0.5*apoyo->getG()*apoyo->getTiempo()*apoyo->getTiempo())<<")"<<endl;
+                posy+apoyo->getV_inicial()*sin(apoyo->getAngulo())*apoyo->getTiempo()-(0.5*apoyo->getG()*apoyo->getTiempo()*apoyo->getTiempo())<<")"<<endl;
         cout << "...Objetivo conseguido..." << endl;
         cout << endl;
     }

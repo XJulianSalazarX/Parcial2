@@ -124,7 +124,6 @@ void Simulacion::PedirDatos()
 bool Simulacion::comprobarDistancia()
 {
 
-    cout << "distancia: " << abs(defensivo->getPosx()-ofensivo->getPosx()) << endl;
     if(defensivo->getPosy()>1000 or defensivo->getPosy()>1000)
         return false;
     else if(abs(defensivo->getPosx()-ofensivo->getPosx())>3000 or abs(defensivo->getPosx()-ofensivo->getPosx())<500)
