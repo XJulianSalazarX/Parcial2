@@ -39,7 +39,7 @@ void Simulacion::Menu()
             else
                 cout << "ERROR.\nlas cordenadas deben ser positivas.\n"
                 "la altura maxima de los caiones es de 1000 m.\n"
-                " y la distancia entre ambos caniones debe ser >= 500 y <= 10000.\n";
+                " y la distancia entre ambos caniones debe ser >= 500 y <= 3000.\n";
 
         }
             break;

@@ -72,6 +72,7 @@ void Canion::generarDisparo(float x_,float y_)
 {
     cout << "Cordenadas canion que ataca: ("<<posx<<","<<posy<<")"<<endl;
     cout << "Cordenadas del objetivo: ("<<x_<<","<<y_<<")"<<endl;
+    cout << "Distacia horizontal entre el canion y el objetivo: " << distance << endl;
     cout << "Velocidad inical de la bala: "<<bala->getV_inicial()<<" m/s."<<endl;
     cout << "Angulo de disparo: " << bala->getAngulo()*180/pi << " grados." << endl;
     cout << "Tiempo en el que se espera que detone la bala: "<<bala->getTiempo()<<" seg."<<endl;
