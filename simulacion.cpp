@@ -132,3 +132,71 @@ bool Simulacion::comprobarDistancia()
 
     return true;
 }
+
+void Simulacion::GenerarTresDispOfensivos()
+{
+    //distancia entre los dos cañones
+    ofensivo->setDistance(abs(defensivo->getPosx()-ofensivo->getPosx()));
+    defensivo->setDistance(abs(defensivo->getPosx()-ofensivo->getPosx()));
+
+    //rango de los angulos
+    if(ofensivo->getPosx()<defensivo->getPosx()){
+        a_menor = 1;
+        a_mayor = 90;
+    }
+    else{
+        a_menor = 91;
+        a_mayor = 180;
+    }
+
+    //ciclo que finaliza  una vez se hayan generado tres disparos de manera efectiva
+    for(short i=0;i<3;){
+
+
+       //generar numeros de manera aleatorio que representan el angulo
+        angle = a_menor + rand() % ((a_mayor) - a_menor);
+        angle = angle*pi/180;
+
+        if(ofensivo->simularDisparo(angle,defensivo->getPosx(),defensivo->getPosy(),0.05)){
+
+            cout << "\nSimulacion " << i+1 << ": " << endl;
+            ofensivo->Datos(true,defensivo->getPosx(),defensivo->getPosy());
+            ofensivo->destruirBala();
+            i++;
+        }
+    }
+}
+
+void Simulacion::GenerarTresDispDefensivos()
+{
+    //distancia entre los dos cañones
+    ofensivo->setDistance(abs(defensivo->getPosx()-ofensivo->getPosx()));
+    defensivo->setDistance(abs(defensivo->getPosx()-ofensivo->getPosx()));
+
+    //rango de los angulos
+    if(ofensivo->getPosx()<defensivo->getPosx()){
+        a_menor = 91;
+        a_mayor = 180;
+    }
+    else{
+        a_menor = 1;
+        a_mayor = 90;
+    }
+
+    //ciclo que finaliza una vez se hayan generado tres disparos de manera efectiva
+    for(short i=0;i<3;){
+
+        //generar numeros de manera aleatorio que representan el angulo
+        angle = a_menor + rand() % ((a_mayor) - a_menor);
+        angle = angle*pi/180;
+
+        if(defensivo->simularDisparo(angle,ofensivo->getPosx(),ofensivo->getPosy(),0.025)){
+
+            cout << "\nSimulacion " << i+1 << ": " << endl;
+            defensivo->Datos(true,ofensivo->getPosx(),ofensivo->getPosy());
+            defensivo->destruirBala();
+            i++;
+        }
+    }
+
+}
